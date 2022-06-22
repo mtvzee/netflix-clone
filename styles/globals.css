@@ -10,3 +10,15 @@
     @apply text-white bg-black;
   }
 }
+
+@layer components {
+  .headerLink {
+    @apply transition duration-300 cursor-pointer text-neutral-200 hover:text-neutral-300;
+  }
+  .dropdownMenu {
+    @apply block w-full py-5 text-center transition duration-300 bg-black/80 hover:bg-black/70;
+  }
+  .profileMenu {
+    @apply py-3 text-center cursor-pointer bg-black/80 hover:underline;
+  }
+}
