@@ -32,7 +32,7 @@ const Home: NextPage<Props> = ({
       </Head>
       <Header />
       <main>
-        <Hero animation={animation} />
+        <Hero comedy={comedy} />
       </main>
     </div>
   );
