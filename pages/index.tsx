@@ -26,13 +26,13 @@ const Home: NextPage<Props> = ({
   scienceFiction,
 }) => {
   return (
-    <div className="h-screen">
+    <div className="h-screen text-white bg-black">
       <Head>
         <title>ホーム - NetflixClone</title>
       </Head>
       <Header />
       <main>
-        <Hero />
+        <Hero animation={animation} />
       </main>
     </div>
   );
