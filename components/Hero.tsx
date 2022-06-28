@@ -3,37 +3,23 @@ import { useEffect, useState } from 'react';
 import { Movie } from '../types/movie';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import PlayButton from './button/PlayButton';
-import { MovieDetails } from '../types/movieDetails';
+import { Button, useDisclosure } from '@chakra-ui/react';
+import ModalDialog from './ModalDialog';
 
 type Props = {
-  comedy: Movie[];
+  scienceFiction: Movie[];
 };
 
-const Hero = ({ comedy }: Props) => {
+const Hero = ({ scienceFiction }: Props) => {
   const [hero, setHero] = useState<Movie | null>(null);
-  const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // ヒーローに表示する映画情報をランダムで取得する
+  // ヒーローイメージに表示する映画情報をランダムで取得する
   useEffect(() => {
-    const randomNum = Math.floor(Math.random() * comedy.length);
-    comedy[randomNum].overview !== '' && setHero(comedy[randomNum]);
-  }, [comedy]);
-
-  // 映画情報の詳細をフェッチ
-  useEffect(() => {
-    const fetchMovieDetails = async (id: number) => {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ja-JP&append_to_response=videos`
-      );
-      const data = await res.json();
-      return data;
-    };
-    if (hero != null) {
-      fetchMovieDetails(hero.id).then((data) => {
-        setMovieDetails(data);
-      });
-    }
-  }, [hero]);
+    const randomNum = Math.floor(Math.random() * scienceFiction.length);
+    scienceFiction[randomNum].overview !== '' &&
+      setHero(scienceFiction[randomNum]);
+  }, [scienceFiction]);
 
   return (
     <>
@@ -56,11 +42,20 @@ const Hero = ({ comedy }: Props) => {
           {hero?.overview != null && hero?.overview.length > 100 && '...'}
         </p>
         <div className="flex items-center space-x-2">
-          <PlayButton movieDetails={movieDetails} />
-          <button className="flex items-center px-3 py-1.5 space-x-2 rounded-md bg-gray-700/70 md:px-6 md:py-2">
+          <PlayButton id={hero?.id} />
+          <Button
+            onClick={onOpen}
+            bg="gray.600"
+            opacity="0.8"
+            size={{ base: 'sm', md: 'lg' }}
+            gap="1"
+            _hover={{ opacity: '.6' }}
+          >
             <AiOutlineInfoCircle className="w-6 h-6" />
             <span className="text-sm md:text-lg">もっと見る</span>
-          </button>
+          </Button>
+          <ModalDialog id={hero?.id} isOpen={isOpen} onClose={onClose} />
+          {/* <button className="flex items-center px-3 py-1.5 space-x-2 rounded-md bg-gray-700/70 md:px-6 md:py-2"></button> */}
         </div>
       </div>
     </>

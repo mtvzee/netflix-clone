@@ -1,4 +1,3 @@
-import { log } from 'console';
 import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import Header from '../components/Header';
@@ -32,7 +31,7 @@ const Home: NextPage<Props> = ({
       </Head>
       <Header />
       <main>
-        <Hero comedy={comedy} />
+        <Hero scienceFiction={scienceFiction} />
       </main>
     </div>
   );
