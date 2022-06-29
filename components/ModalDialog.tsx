@@ -49,10 +49,10 @@ const ModalDialog = ({ id, isOpen, onClose }: Props) => {
               objectFit="cover"
             />
           </div>
-          <h1 className="absolute top-[12%] z-40 text-4xl text-white left-10 tracking-tighter font-bold md:top-1/4 md:text-6xl">
+          <h1 className="absolute top-[12%] z-40 text-4xl text-white left-10 tracking-tighter font-bold md:top-1/4 md:text-7xl">
             {movieDetails?.title}
           </h1>
-          <div className="absolute z-40 flex items-center space-x-3 top-[20%] left-10 md:top-1/3">
+          <div className="absolute z-40 flex items-center space-x-3 top-[20%] left-10 md:top-[40%]">
             <PlayButton id={id} />
             <button className="p-2 border-2 rounded-full border-neutral-400 bg-neutral-700/80 hover:border-neutral-300">
               <AiOutlinePlus className="w-4 h-4 text-white md:h-6 md:w-6" />
