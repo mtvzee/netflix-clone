@@ -26,7 +26,7 @@ const Home: NextPage<Props> = ({
   scienceFiction,
 }) => {
   return (
-    <div className="h-screen text-white ">
+    <div className="w-full h-screen text-white ">
       <Head>
         <title>ホーム - NetflixClone</title>
       </Head>

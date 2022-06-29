@@ -6,9 +6,9 @@
   html {
     @apply text-sm lg:text-base;
   }
-  body {
+  /* body {
     @apply text-white bg-black;
-  }
+  } */
 }
 
 @layer components {
