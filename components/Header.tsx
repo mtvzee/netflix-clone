@@ -1,12 +1,31 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { AiFillBell, AiOutlineSearch } from 'react-icons/ai';
 import DropdownMenu from './DropdownMenu';
 import ProfileMenu from './ProfileMenu';
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="fixed top-0 z-10 flex items-center justify-between w-full px-6 py-2 bg-gradient-to-b from-black/60 to-transparent lg:px-10 xl:px-16">
+    <div
+      className={`fixed top-0 z-10 flex items-center justify-between w-full px-6 py-2 bg-gradient-to-b from-black/60 to-transparent lg:px-10 xl:px-16 ${
+        isScrolled && 'bg-black'
+      }`}
+    >
       <div className="flex items-center space-x-7">
         <div className="relative h-8 w-14 lg:w-20 lg:h-12">
           <Image
