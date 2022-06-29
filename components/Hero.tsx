@@ -23,7 +23,7 @@ const Hero = ({ scienceFiction }: Props) => {
 
   return (
     <>
-      <div className="absolute top-0 h-[35vh] md:h-[50vh] lg:h-[75vh] xl:h-[85vh] 2xl:h-screen w-screen min-h-[300px]">
+      <div className="absolute top-0 h-[35vh] md:h-[50vh] lg:h-[75vh] xl:h-[85vh] 2xl:h-screen w-screen min-h-[300px] left-0 -z-10">
         <Image
           src={`https://image.tmdb.org/t/p/original/${
             hero?.backdrop_path || hero?.poster_path
@@ -33,7 +33,7 @@ const Hero = ({ scienceFiction }: Props) => {
           objectFit="cover"
         />
       </div>
-      <div className="absolute flex flex-col pt-24 pl-6 space-y-3 lg:pl-10 xl:pl-16 md:pt-36 xl:pt-60 lg:space-y-5">
+      <div className="flex flex-col space-y-3 py-14 md:py-28 lg:py-36 xl:pt-60 lg:space-y-5">
         <h1 className="max-w-md text-3xl font-bold lg:text-5xl xl:text-7xl lg:max-w-xl">
           {hero?.title || hero?.original_title}
         </h1>
