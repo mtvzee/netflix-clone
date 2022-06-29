@@ -9,7 +9,8 @@ const ProfileMenu = () => {
     <div className="relative flex items-center space-x-3 group">
       <Avatar src="https://occ-0-1190-2774.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41" />
       <GoTriangleDown className="hidden transition duration-300 lg:block group-hover:rotate-180" />
-      <ul className="absolute invisible transition duration-300 opacity-0 -left-48 w-52 top-16 group-hover:opacity-100 group-hover:visible">
+      <ul className="absolute invisible transition duration-300 opacity-0 -left-48 w-52 top-6 group-hover:opacity-100 group-hover:visible">
+        <li className="h-10"></li>
         <li className="flex items-center px-2 space-x-2 profileMenu">
           <Avatar src="/unknown.jpg" />
           <span>ゲスト</span>
