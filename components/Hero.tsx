@@ -55,7 +55,6 @@ const Hero = ({ scienceFiction }: Props) => {
             <span className="text-sm md:text-lg">もっと見る</span>
           </Button>
           <ModalDialog id={hero?.id} isOpen={isOpen} onClose={onClose} />
-          {/* <button className="flex items-center px-3 py-1.5 space-x-2 rounded-md bg-gray-700/70 md:px-6 md:py-2"></button> */}
         </div>
       </div>
     </>

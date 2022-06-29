@@ -22,6 +22,7 @@ type Props = {
 const ModalDialog = ({ id, isOpen, onClose }: Props) => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
+
   useEffect(() => {
     if (id != null) {
       fetchMovieDetails(id).then((data) => setMovieDetails(data));
@@ -68,7 +69,7 @@ const ModalDialog = ({ id, isOpen, onClose }: Props) => {
                   マッチ度:
                   {movieDetails != null && movieDetails?.vote_average * 10}%
                 </p>
-                <span>{movieDetails?.release_date.slice(0, 4)}</span>
+                <span>{movieDetails?.release_date?.slice(0, 4)}</span>
                 <span className="px-2 text-sm border rounded">HD</span>
               </div>
               <p>{movieDetails?.overview}</p>
@@ -80,7 +81,7 @@ const ModalDialog = ({ id, isOpen, onClose }: Props) => {
               </h2>
               <div>
                 <span className="text-gray-400">ジャンル:</span>
-                {movieDetails?.genres.map((genre) => genre.name).join(', ')}
+                {movieDetails?.genres?.map((genre) => genre.name).join(', ')}
               </div>
             </div>
           </div>
