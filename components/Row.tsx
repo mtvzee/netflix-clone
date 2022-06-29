@@ -40,7 +40,7 @@ const Row = ({ title, movies }: Props) => {
           </button>
         )}
         <div
-          className="flex items-center space-x-0.5 overflow-x-hidden md:space-x-2"
+          className="flex items-center space-x-0.5 overflow-hidden md:space-x-2"
           ref={rowRef}
         >
           {movies.map((movie) => (
