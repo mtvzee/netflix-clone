@@ -81,9 +81,9 @@ const SignUp = () => {
           className="flex flex-col items-center space-y-4 lg:flex-row lg:space-y-0"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <label className="block ">
+          <label>
             <input
-              type="text"
+              type="email"
               placeholder="メールアドレス"
               className={`w-[80vw] max-w-xl p-5 text-lg text-black lg:max-w-lg lg:p-4 ${
                 errors.email
