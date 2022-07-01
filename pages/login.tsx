@@ -32,7 +32,9 @@ const Login = () => {
   }, [setValue]);
 
   const onSubmit: SubmitHandler<FormInput> = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
+    signInWithEmailAndPassword(data.email, data.password).then(() =>
+      router.push('/')
+    );
     // if (error) {
     //   console.log(error);
     // }
