@@ -7,11 +7,11 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { BsHandThumbsUp } from 'react-icons/bs';
+import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai';
 import { MovieDetails } from '../types/movieDetails';
 import { fetchMovieDetails } from '../utils/fetchMovieDetails';
 import PlayButton from './button/PlayButton';
+import RatingButton from './button/RatingButton';
 
 type Props = {
   id?: number;
@@ -21,13 +21,14 @@ type Props = {
 
 const ModalDialog = ({ id, isOpen, onClose }: Props) => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
-
+  const [isAddedToMyList, setIsAddedToMyList] = useState(false);
 
   useEffect(() => {
     if (id != null) {
       fetchMovieDetails(id).then((data) => setMovieDetails(data));
     }
   }, [id]);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={{ sm: 'lg', md: '4xl' }}>
       <ModalOverlay />
@@ -55,12 +56,17 @@ const ModalDialog = ({ id, isOpen, onClose }: Props) => {
           </h1>
           <div className="absolute z-40 flex items-center space-x-3 top-[20%] left-10 md:top-[40%]">
             <PlayButton id={id} />
-            <button className="p-2 border-2 rounded-full border-neutral-400 bg-neutral-700/80 hover:border-neutral-300">
-              <AiOutlinePlus className="w-4 h-4 text-white md:h-6 md:w-6" />
+            <button
+              className="p-2 border-2 rounded-full border-neutral-400 bg-neutral-700/80 hover:border-neutral-300"
+              onClick={() => setIsAddedToMyList(!isAddedToMyList)}
+            >
+              {isAddedToMyList ? (
+                <AiOutlineCheck className="w-4 h-4 text-white md:h-6 md:w-6" />
+              ) : (
+                <AiOutlinePlus className="w-4 h-4 text-white md:h-6 md:w-6" />
+              )}
             </button>
-            <button className="p-2 border-2 rounded-full border-neutral-400 bg-neutral-700/80 hover:border-neutral-300">
-              <BsHandThumbsUp className="w-4 h-4 text-white md:h-6 md:w-6" />
-            </button>
+            <RatingButton />
           </div>
           <div className="flex px-10 pt-2 space-x-6 text-white md:space-x-8">
             <div className="space-y-6 basis-3/5">
