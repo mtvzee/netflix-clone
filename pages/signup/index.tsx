@@ -22,9 +22,9 @@ const SignUp = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const info = sessionStorage.getItem('email');
-    if (info) {
-      setValue('email', info);
+    const email = sessionStorage.getItem('email');
+    if (email) {
+      setValue('email', email);
     }
   }, [setValue]);
 

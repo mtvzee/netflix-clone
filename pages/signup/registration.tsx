@@ -17,6 +17,7 @@ const Registration = () => {
   const {
     register,
     handleSubmit,
+    
     formState: { errors },
   } = useForm<FormInput>();
   const [createUserWithEmailAndPassword, user, loading, error] =
