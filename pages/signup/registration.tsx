@@ -8,30 +8,30 @@ import { auth } from '../../firebase';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 type FormInput = {
+  email: string;
   password: string;
 };
 
 const Registration = () => {
   const router = useRouter();
-  const [email, setEmail] = useState('');
   const {
     register,
     handleSubmit,
-    
+    setValue,
     formState: { errors },
   } = useForm<FormInput>();
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   useEffect(() => {
-    const info = sessionStorage.getItem('email');
-    if (info != null) {
-      setEmail(info);
+    const email = sessionStorage.getItem('email');
+    if (email != null) {
+      setValue('email', email);
     }
-  }, []);
+  }, [setValue]);
 
   const onSubmit: SubmitHandler<FormInput> = (data) => {
-    createUserWithEmailAndPassword(email, data.password).then(() =>
+    createUserWithEmailAndPassword(data.email, data.password).then(() =>
       router.push('/')
     );
   };
@@ -73,8 +73,7 @@ const Registration = () => {
             <input
               type="email"
               className="w-full px-3 py-5 border-2 border-gray-300 rounded-sm focus:outline-blue-400"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register('email', { required: true })}
             />
             <label>
               <input
