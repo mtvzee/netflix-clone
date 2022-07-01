@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { auth } from '../../firebase';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 type FormInput = {
   password: string;
@@ -17,6 +19,8 @@ const Registration = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInput>();
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
   useEffect(() => {
     const storage = sessionStorage.getItem('email');
@@ -25,7 +29,11 @@ const Registration = () => {
     }
   }, []);
 
-  const onSubmit: SubmitHandler<FormInput> = (data) => {};
+  const onSubmit: SubmitHandler<FormInput> = (data) => {
+    createUserWithEmailAndPassword(email, data.password).then(() =>
+      router.push('/')
+    );
+  };
 
   return (
     <div className="min-h-screen text-black bg-white">
