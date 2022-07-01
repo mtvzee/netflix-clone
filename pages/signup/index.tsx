@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { BsChevronRight } from 'react-icons/bs';
 
@@ -12,12 +12,21 @@ type FormInput = {
 
 const SignUp = () => {
   const [optionValue, setOptionValue] = useState('日本語');
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormInput>();
   const router = useRouter();
+
+  useEffect(() => {
+    const info = sessionStorage.getItem('email');
+    if (info) {
+      setValue('email', info);
+    }
+  }, [setValue]);
 
   const onSubmit: SubmitHandler<FormInput> = (data) => {
     sessionStorage.setItem('email', data.email);
@@ -90,6 +99,8 @@ const SignUp = () => {
                   ? 'border-b-2 border-b-orange-500 outline-none'
                   : 'outline-blue-500'
               }`}
+              // value={email}
+              // onChange={(e) => setEmail(e.target.value)}
               {...register('email', { required: true })}
             />
             {errors.email && (

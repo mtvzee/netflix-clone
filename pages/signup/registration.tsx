@@ -23,9 +23,9 @@ const Registration = () => {
     useCreateUserWithEmailAndPassword(auth);
 
   useEffect(() => {
-    const storage = sessionStorage.getItem('email');
-    if (storage != null) {
-      setEmail(storage);
+    const info = sessionStorage.getItem('email');
+    if (info != null) {
+      setEmail(info);
     }
   }, []);
 
