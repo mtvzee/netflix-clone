@@ -21,7 +21,7 @@ const Login = () => {
     setValue,
     formState: { errors },
   } = useForm<FormInput>();
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword,  error] =
     useSignInWithEmailAndPassword(auth);
 
   useEffect(() => {
@@ -35,9 +35,6 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password).then(() =>
       router.push('/')
     );
-    // if (error) {
-    //   console.log(error);
-    // }
   };
 
   return (

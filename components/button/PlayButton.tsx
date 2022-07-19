@@ -6,7 +6,6 @@ import { MovieDetails } from '../../types/movieDetails';
 import { fetchMovieDetails } from '../../utils/fetchMovieDetails';
 
 type Props = {
-  // movieDetails: MovieDetails | null;
   id?: number;
 };
 
@@ -35,21 +34,8 @@ const PlayButton = ({ id }: Props) => {
             url={`https://www.youtube.com/watch?v=${movieDetails?.videos.results[0].key}`}
             width="100%"
             height="100%"
-            // style={{
-            //   position: 'absolute',
-            //   top: '0',
-            //   left: '0',
-            // }}
             playing
             controls
-            // playIcon={<button>Play</button>}
-            // muted={muted}
-            // controls={true}
-            // config={{
-            //   youtube: {
-            //     playerVars: { showinfo: 1 },
-            //   },
-            // }}
           />
           <button
             className="absolute z-50 top-16 left-5 "
