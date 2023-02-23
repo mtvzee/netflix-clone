@@ -1,0 +1,28 @@
+.dropdownMenu {
+  position: relative;
+}
+.dropdownMenuLinks {
+  position: absolute;
+  top: 40px;
+  left: -100px;
+  width: 260px;
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.4s;
+}
+.dropdownMenu:hover .dropdownMenuLinks {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.5s;
+}
+.dropdownMenuLink {
+  display: block;
+  text-align: center;
+  padding: 14px 0;
+  color: var(--light-c);
+  background: rgba(0, 0, 0, 0.9);
+  transition: background 0.4s;
+}
+.dropdownMenuLink:hover {
+  background: rgba(0, 0, 0, 0.8);
+}

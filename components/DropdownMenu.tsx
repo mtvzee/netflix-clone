@@ -1,38 +1,38 @@
 import Link from 'next/link';
 import { GoTriangleDown } from 'react-icons/go';
+import styles from '../styles/components/DropdownMenu.module.css';
 
 const DropdownMenu = () => {
   return (
-    <div className="relative cursor-pointer group">
-      <div className="flex items-center space-x-1 lg:hidden">
-        <span>メニュー</span>
+    <div className={styles.dropdownMenu}>
+      <div className="relative flex items-center space-x-1 cursor-pointer lg:hidden">
+        <span className="text-[10px]">メニュー</span>
         <GoTriangleDown />
       </div>
-      <ul className="absolute invisible transition duration-300 opacity-0 top-5 -left-24 w-72 group-hover:opacity-100 group-hover:visible">
-        <li className="h-10 border-b-2"></li>
+      <ul className={styles.dropdownMenuLinks}>
         <li>
-          <Link href="/">
-            <a className="border-t-2 dropdownMenu">ホーム</a>
+          <Link href="/" className={`${styles.dropdownMenuLink} border-t-2`}>
+            ホーム
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a className="dropdownMenu">TV番組・ドラマ</a>
+          <Link href="/" className={styles.dropdownMenuLink}>
+            TV番組・ドラマ
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a className="dropdownMenu">映画</a>
+          <Link href="/" className={styles.dropdownMenuLink}>
+            映画
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a className="dropdownMenu">新作&人気作</a>
+          <Link href="/" className={styles.dropdownMenuLink}>
+            新作&人気作
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a className="dropdownMenu">マイリスト</a>
+          <Link href="/" className="dropdownMenuLink">
+            マイリスト
           </Link>
         </li>
       </ul>

@@ -2,22 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --light-c: #b3b3b3;
+}
+
 @layer base {
   html {
     @apply text-sm lg:text-base;
   }
-  /* body {
-    @apply text-white bg-black;
-  } */
 }
 
 @layer components {
   .headerLink {
-    @apply transition duration-300 cursor-pointer text-neutral-200 hover:text-neutral-300;
+    color: rgb(229, 229, 229);
+    cursor: pointer;
+    transition: 0.4s;
   }
-  .dropdownMenu {
-    @apply block w-full py-5 text-center transition duration-300 bg-black/80 hover:bg-black/70;
+  .headerLink:hover {
+    color: var(--light-c);
   }
+
   .profileMenu {
     @apply py-3 text-center cursor-pointer bg-black/80 hover:underline;
   }
