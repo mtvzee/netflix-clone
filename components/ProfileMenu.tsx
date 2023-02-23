@@ -6,6 +6,7 @@ import Avatar from './Avatar';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useRouter } from 'next/router';
+import styles from '../styles/components/ProfileMenu.module.css';
 
 const ProfileMenu = () => {
   const router = useRouter();
@@ -13,31 +14,39 @@ const ProfileMenu = () => {
     signOut(auth).then(() => router.push('/signup'));
   };
   return (
-    <div className="relative flex items-center space-x-3 group">
-      <Avatar src="https://occ-0-1190-2774.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41" />
-      <GoTriangleDown className="hidden transition duration-300 lg:block group-hover:rotate-180" />
-      <ul className="absolute invisible transition duration-300 opacity-0 -left-48 w-52 top-6 group-hover:opacity-100 group-hover:visible">
-        <li className="h-10"></li>
-        <li className="flex items-center px-2 space-x-2 profileMenu">
-          <Avatar src="/unknown.jpg" />
-          <span>ゲスト</span>
-        </li>
-        <li className="flex items-center px-2 space-x-2 profileMenu">
-          <MdOutlineEdit className="w-8 h-8" />
-          <span>プロフィールの管理</span>
-        </li>
-        <li className="flex items-center px-2 space-x-2 border-t profileMenu">
-          <AiOutlineUser className="w-8 h-8" />
-          <span>アカウント</span>
-        </li>
-        <li className="flex items-center px-2 space-x-2 profileMenu">
-          <BiHelpCircle className="w-8 h-8" />
-          <span>ヘルプセンター</span>
-        </li>
-        <li className="border-t profileMenu" onClick={handleLogOut}>
-          ログアウト
-        </li>
-      </ul>
+    <div className={styles.menu}>
+      <div className={styles.menuIcon}>
+        <Avatar src="https://occ-0-1190-2774.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41" />
+        <GoTriangleDown className={styles.triangle} />
+      </div>
+
+      <div className={styles.container}>
+        <ul className={styles.accounts}>
+          <li className={styles.accountItem}>
+            <Avatar src="/unknown.jpg" />
+            <span className={styles.text}>ゲスト</span>
+          </li>
+        </ul>
+        <ul className={styles.subMenu}>
+          <li className={styles.subMenuItem}>
+            <MdOutlineEdit className={styles.icon} />
+            <span className={styles.text}>プロフィールの管理</span>
+          </li>
+          <li className={styles.subMenuItem}>
+            <AiOutlineUser className={styles.icon} />
+            <span className={styles.text}>アカウント</span>
+          </li>
+          <li className={styles.subMenuItem}>
+            <BiHelpCircle className={styles.icon} />
+            <span className={styles.text}>ヘルプセンター</span>
+          </li>
+        </ul>
+        <ul className={styles.logout}>
+          <li className={styles.logoutItem} onClick={handleLogOut}>
+            <span className={styles.text}>ログアウト</span>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

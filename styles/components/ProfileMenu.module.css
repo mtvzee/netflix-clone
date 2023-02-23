@@ -1,0 +1,80 @@
+.menu {
+  position: relative;
+}
+
+.menuIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.triangle {
+  display: none;
+  transition: 0.3s;
+}
+.menuIcon:hover .triangle {
+  transform: rotate(180deg);
+}
+@media (min-width: 1024px) {
+  .triangle {
+    display: block;
+  }
+}
+
+.container {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 220px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.accounts {
+  padding: 10px 8px 4px;
+  border-bottom: 1px solid #333;
+}
+.accountItem {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  cursor: pointer;
+}
+.accountItem:hover {
+  text-decoration: underline;
+}
+
+.subMenu {
+  padding: 16px 12px 12px;
+  border-bottom: 1px solid #333;
+}
+.subMenuItem {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  column-gap: 16px;
+  cursor: pointer;
+}
+.icon {
+  width: 26px;
+  height: 26px;
+  color: var(--light-c);
+}
+.text {
+  font-size: 13px;
+}
+.subMenuItem:hover .text {
+  text-decoration: underline;
+}
+.logout {
+  padding: 10px 0;
+}
+.logoutItem {
+  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.logoutItem:hover {
+  text-decoration: underline;
+}
