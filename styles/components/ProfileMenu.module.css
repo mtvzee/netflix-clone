@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   column-gap: 10px;
+  cursor: pointer;
 }
 .triangle {
   display: none;
@@ -22,11 +23,18 @@
 }
 
 .container {
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 45px;
   right: 0;
   width: 220px;
   background: rgba(0, 0, 0, 0.8);
+  transition: 0.2s;
+}
+.menuIcon:hover ~ .container {
+  opacity: 1;
+  visibility: visible;
 }
 
 .accounts {
