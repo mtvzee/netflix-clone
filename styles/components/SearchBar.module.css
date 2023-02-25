@@ -1,0 +1,47 @@
+.searchBar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: width 0.4s;
+  z-index: 1;
+}
+.input::placeholder {
+  color: transparent;
+}
+.input:focus::placeholder {
+  color: var(--light-c);
+  font-size: 14px;
+}
+.input:focus {
+  width: 280px;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  padding: 0 0 0 50px;
+  border: 1px solid #fff;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+.input:focus ~ .icon {
+  transform: translateX(-235px);
+  z-index: 2;
+  transition: transform 0.4s;
+}
