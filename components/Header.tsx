@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { AiFillBell, AiOutlineSearch } from 'react-icons/ai';
+import { BiBell } from 'react-icons/bi';
 import DropdownMenu from './DropdownMenu';
 import ProfileMenu from './ProfileMenu';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,55 +22,55 @@ const Header = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed top-0 z-10 flex items-center justify-between w-full px-6 py-2 bg-gradient-to-b from-black/60 to-transparent lg:px-10 xl:px-16 ${
+    <header
+      className={`fixed top-0 z-10 h-[41px] md:h-[68px] flex items-center justify-between w-full px-6 md:px-10 xl:px-16 ${
         isScrolled && 'bg-black'
       }`}
     >
-      <div className="flex items-center space-x-7">
-        <div className="relative h-8 w-14 lg:w-20 lg:h-12">
+      <div className="flex items-center space-x-5">
+        <div className="relative w-[60px] h-[20px] md:w-[92px] md:h-[25px]">
           <Image
             src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
             alt="netflix-logo"
-            layout="fill"
-            objectFit="contain"
+            fill
+            className="object-contain"
           />
         </div>
         <DropdownMenu />
         <ul className="items-center hidden space-x-5 lg:flex">
           <li>
-            <Link href="/">
-              <a className="text-white headerLink">ホーム</a>
+            <Link href="/" className="text-white headerLink">
+              ホーム
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a className="headerLink">TV番組・ドラマ</a>
+            <Link href="/" className="headerLink">
+              TV番組・ドラマ
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a className="headerLink">映画</a>
+            <Link href="/" className="headerLink">
+              映画
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a className="headerLink">新作&人気作</a>
+            <Link href="/" className="headerLink">
+              新作&人気作
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a className="headerLink">マイリスト</a>
+            <Link href="/" className="headerLink">
+              マイリスト
             </Link>
           </li>
         </ul>
       </div>
-      <div className="flex items-center space-x-5">
-        <AiOutlineSearch className="cursor-pointer w-7 h-7" />
-        <AiFillBell className="cursor-pointer w-7 h-7" />
+      <div className="flex items-center space-x-6">
+        <SearchBar />
+        <BiBell className="cursor-pointer w-7 h-7" />
         <ProfileMenu />
       </div>
-    </div>
+    </header>
   );
 };
 
