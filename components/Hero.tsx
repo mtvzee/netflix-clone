@@ -5,6 +5,7 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import PlayButton from './button/PlayButton';
 import { Button, useDisclosure } from '@chakra-ui/react';
 import ModalDialog from './ModalDialog';
+import styles from '../styles/components/Hero.module.css';
 
 type Props = {
   scienceFiction: Movie[];
@@ -22,22 +23,23 @@ const Hero = ({ scienceFiction }: Props) => {
   }, [scienceFiction]);
 
   return (
-    <>
-      <div className="absolute top-0 h-[35vh] md:h-[50vh] lg:h-[75vh] xl:h-[85vh] 2xl:h-screen w-screen min-h-[300px] left-0 -z-10">
-        <Image
-          src={`https://image.tmdb.org/t/p/original/${
-            hero?.backdrop_path || hero?.poster_path
-          }`}
-          alt={hero?.original_title}
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
-      <div className="flex flex-col space-y-3 py-14 md:py-28 lg:py-36 xl:pt-60 lg:space-y-5">
-        <h1 className="max-w-md text-3xl font-bold lg:text-5xl xl:text-7xl lg:max-w-xl">
+    <div className="relative aspect-[16/7]">
+      <Image
+        src={`https://image.tmdb.org/t/p/original/${
+          hero?.backdrop_path || hero?.poster_path
+        }`}
+        alt={hero?.original_title ?? ''}
+        className={styles.hero}
+        fill
+      />
+      <div className={styles.info}>
+        <h1
+          // className="max-w-md text-3xl font-bold lg:text-5xl xl:text-7xl lg:max-w-xl"
+          className={styles.title}
+        >
           {hero?.title || hero?.original_title}
         </h1>
-        <p className="max-w-xs text-xs text-neutral-100 md:text-md lg:max-w-lg lg:text-lg">
+        <p className={styles.description}>
           {hero?.overview.slice(0, 100)}
           {hero?.overview != null && hero?.overview.length > 100 && '...'}
         </p>
@@ -57,7 +59,7 @@ const Hero = ({ scienceFiction }: Props) => {
           <ModalDialog id={hero?.id} isOpen={isOpen} onClose={onClose} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
