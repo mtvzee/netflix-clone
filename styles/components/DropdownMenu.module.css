@@ -1,7 +1,20 @@
-.dropdownMenu {
+.container {
   position: relative;
 }
-.dropdownMenuLinks {
+@media (min-width: 768px) {
+  .container {
+    display: none;
+  }
+}
+.menuIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-size: 1vw;
+}
+.links {
   position: absolute;
   top: 40px;
   left: -100px;
@@ -10,12 +23,12 @@
   visibility: hidden;
   transition-delay: 0.4s;
 }
-.dropdownMenu:hover .dropdownMenuLinks {
+.container:hover .links {
   opacity: 1;
   visibility: visible;
-  transition: 0.5s;
+  transition: 0.3s;
 }
-.dropdownMenuLink {
+.menuItem {
   display: block;
   text-align: center;
   padding: 14px 0;
@@ -23,6 +36,9 @@
   background: rgba(0, 0, 0, 0.9);
   transition: background 0.4s;
 }
-.dropdownMenuLink:hover {
+.links:first-of-type {
+  border-top: 2px solid #fff;
+}
+.menuItem:hover {
   background: rgba(0, 0, 0, 0.8);
 }

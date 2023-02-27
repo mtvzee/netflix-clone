@@ -23,7 +23,7 @@ const Hero = ({ scienceFiction }: Props) => {
   }, [scienceFiction]);
 
   return (
-    <div className="relative aspect-[16/7]">
+    <div className={styles.container}>
       <Image
         src={`https://image.tmdb.org/t/p/original/${
           hero?.backdrop_path || hero?.poster_path
@@ -33,17 +33,12 @@ const Hero = ({ scienceFiction }: Props) => {
         fill
       />
       <div className={styles.info}>
-        <h1
-          // className="max-w-md text-3xl font-bold lg:text-5xl xl:text-7xl lg:max-w-xl"
-          className={styles.title}
-        >
-          {hero?.title || hero?.original_title}
-        </h1>
+        <h1 className={styles.title}>{hero?.title || hero?.original_title}</h1>
         <p className={styles.description}>
           {hero?.overview.slice(0, 100)}
           {hero?.overview != null && hero?.overview.length > 100 && '...'}
         </p>
-        <div className="flex items-center space-x-2">
+        <div className={styles.buttons}>
           <PlayButton id={hero?.id} />
           <Button
             onClick={onOpen}

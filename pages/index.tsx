@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import Row from '../components/Row';
 import { requests } from '../constants';
 import { Movie } from '../types/movie';
+import styles from '../styles/pages/Home.module.css';
 
 type Props = {
   trending: Movie[];
@@ -26,14 +27,14 @@ const Home: NextPage<Props> = ({
   scienceFiction,
 }) => {
   return (
-    <div className="w-full h-screen text-white ">
+    <div className={styles.container}>
       <Head>
         <title>ホーム - NetflixClone</title>
       </Head>
       <Header />
-      <main className="pl-6 lg:pl-10 xl:pl-16">
+      <main>
         <Hero scienceFiction={scienceFiction} />
-        <div className="relative space-y-5 md:space-y-8">
+        <div className={styles.rows}>
           <Row title="人気急上昇の作品" movies={trending} />
           <Row title="アドベンチャー" movies={adventure} />
           <Row title="アニメ" movies={animation} />

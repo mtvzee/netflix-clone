@@ -2,27 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-size: 14px;
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+body {
+  color: #fff;
+}
+
 :root {
   --light-c: #b3b3b3;
-}
-
-@layer base {
-  html {
-    @apply text-sm lg:text-base;
-  }
-}
-
-@layer components {
-  .headerLink {
-    color: rgb(229, 229, 229);
-    cursor: pointer;
-    transition: 0.4s;
-  }
-  .headerLink:hover {
-    color: var(--light-c);
-  }
-
-  .profileMenu {
-    @apply py-3 text-center cursor-pointer bg-black/80 hover:underline;
-  }
 }

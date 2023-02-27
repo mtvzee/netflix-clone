@@ -5,6 +5,7 @@ import { BiBell } from 'react-icons/bi';
 import DropdownMenu from './DropdownMenu';
 import ProfileMenu from './ProfileMenu';
 import SearchBar from './SearchBar';
+import styles from '../styles/components/Header.module.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,53 +23,50 @@ const Header = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 z-10 h-[41px] md:h-[68px] flex items-center justify-between w-full px-6 md:px-10 xl:px-16 ${
-        isScrolled && 'bg-black'
-      }`}
-    >
-      <div className="flex items-center space-x-5">
-        <div className="relative w-[60px] h-[20px] md:w-[92px] md:h-[25px]">
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-            alt="netflix-logo"
-            fill
-            className="object-contain"
-          />
+    <header className={`${styles.header} ${isScrolled && styles.isScrolled}`}>
+      <div className={styles.container}>
+        <div className={styles.leftBox}>
+          <div className={styles.logo}>
+            <Image
+              src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+              alt="netflix-logo"
+              fill
+            />
+          </div>
+          <DropdownMenu />
+          <ul className={styles.menuNav}>
+            <li>
+              <Link href="/" className={styles.headerLInk}>
+                ホーム
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className={styles.headerLink}>
+                TV番組・ドラマ
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className={styles.headerLink}>
+                映画
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className={styles.headerLink}>
+                新作&人気作
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className={styles.headerLink}>
+                マイリスト
+              </Link>
+            </li>
+          </ul>
         </div>
-        <DropdownMenu />
-        <ul className="items-center hidden space-x-5 lg:flex">
-          <li>
-            <Link href="/" className="text-white headerLink">
-              ホーム
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="headerLink">
-              TV番組・ドラマ
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="headerLink">
-              映画
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="headerLink">
-              新作&人気作
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="headerLink">
-              マイリスト
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="flex items-center space-x-6">
-        <SearchBar />
-        <BiBell className="cursor-pointer w-7 h-7" />
-        <ProfileMenu />
+        <div className={styles.rightBox}>
+          <SearchBar />
+          <BiBell className={styles.bellIcon} />
+          <ProfileMenu />
+        </div>
       </div>
     </header>
   );

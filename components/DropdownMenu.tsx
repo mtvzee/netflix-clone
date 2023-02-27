@@ -4,34 +4,37 @@ import styles from '../styles/components/DropdownMenu.module.css';
 
 const DropdownMenu = () => {
   return (
-    <div className={styles.dropdownMenu}>
-      <div className="relative flex items-center space-x-1 cursor-pointer lg:hidden">
-        <span className="text-[10px]">メニュー</span>
+    <div className={styles.container}>
+      <div
+        // className="relative flex items-center space-x-1 cursor-pointer lg:hidden"
+        className={styles.menuIcon}
+      >
+        <span className={styles.title}>メニュー</span>
         <GoTriangleDown />
       </div>
-      <ul className={styles.dropdownMenuLinks}>
+      <ul className={styles.links}>
         <li>
-          <Link href="/" className={`${styles.dropdownMenuLink} border-t-2`}>
+          <Link href="/" className={styles.menuItem}>
             ホーム
           </Link>
         </li>
         <li>
-          <Link href="/" className={styles.dropdownMenuLink}>
+          <Link href="/" className={styles.menuItem}>
             TV番組・ドラマ
           </Link>
         </li>
         <li>
-          <Link href="/" className={styles.dropdownMenuLink}>
+          <Link href="/" className={styles.menuItem}>
             映画
           </Link>
         </li>
         <li>
-          <Link href="/" className={styles.dropdownMenuLink}>
+          <Link href="/" className={styles.menuItem}>
             新作&人気作
           </Link>
         </li>
         <li>
-          <Link href="/" className="dropdownMenuLink">
+          <Link href="/" className={styles.menuItem}>
             マイリスト
           </Link>
         </li>
