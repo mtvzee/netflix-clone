@@ -30,11 +30,12 @@
   right: 0;
   width: 220px;
   background: rgba(0, 0, 0, 0.8);
-  transition: 0.2s;
+  transition: 0.3s 0.5s;
 }
-.menuIcon:hover ~ .container {
+.menu:hover .container {
   opacity: 1;
   visibility: visible;
+  transition: 0.3s;
 }
 
 .accounts {
