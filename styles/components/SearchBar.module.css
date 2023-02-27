@@ -37,8 +37,8 @@
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
 }
 .input:focus ~ .icon {
   transform: translateX(-235px);
