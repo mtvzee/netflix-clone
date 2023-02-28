@@ -2,10 +2,8 @@
   position: relative;
   aspect-ratio: 16/7;
 }
-
-.hero {
+.heroImage {
   position: absolute;
-  width: 100%;
   aspect-ratio: 16/8;
   object-fit: cover;
 }

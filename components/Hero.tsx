@@ -29,8 +29,9 @@ const Hero = ({ scienceFiction }: Props) => {
           hero?.backdrop_path || hero?.poster_path
         }`}
         alt={hero?.original_title ?? ''}
-        className={styles.hero}
-        fill
+        className={styles.heroImage}
+        width={3000}
+        height={2000}
       />
       <div className={styles.info}>
         <h1 className={styles.title}>{hero?.title || hero?.original_title}</h1>
