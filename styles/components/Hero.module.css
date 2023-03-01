@@ -6,6 +6,7 @@
   position: absolute;
   aspect-ratio: 16/8;
   object-fit: cover;
+  z-index: -1;
 }
 
 .info {
