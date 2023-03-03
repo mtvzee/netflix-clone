@@ -6,6 +6,7 @@ import Carousel from '../components/Carousel';
 import { requests } from '../constants';
 import { Movie } from '../types/movie';
 import styles from '../styles/pages/Home.module.css';
+import Footer from '../components/Footer';
 
 type Props = {
   trending: Movie[];
@@ -44,6 +45,7 @@ const Home: NextPage<Props> = ({
           <Carousel title="サイエンスフィクション" movies={scienceFiction} />
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

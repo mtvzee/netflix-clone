@@ -1,0 +1,52 @@
+.container {
+  max-width: 980px;
+  margin: 70px auto 0;
+  padding: 0 4%;
+}
+.snsLinks {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  margin-bottom: 1em;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.infoLinks {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  color: #808080;
+  font-size: 13px;
+}
+.infoItem {
+  flex: 0 0 50%;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .infoItem {
+    flex-basis: 25%;
+  }
+}
+.infoLink:hover {
+  text-decoration: underline;
+}
+
+.serviceCode {
+  margin-bottom: 20px;
+  padding: 0.5em;
+  border: 1px solid #808080;
+  color: #808080;
+  font-size: 13px;
+}
+.serviceCode:hover {
+  color: #fff;
+}
+
+.copyright {
+  margin-bottom: 15px;
+  color: #808080;
+  font-size: 11px;
+}
