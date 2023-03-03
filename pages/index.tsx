@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import Row from '../components/Row';
+import Carousel from '../components/Carousel';
 import { requests } from '../constants';
 import { Movie } from '../types/movie';
 import styles from '../styles/pages/Home.module.css';
@@ -27,21 +27,21 @@ const Home: NextPage<Props> = ({
   scienceFiction,
 }) => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>ホーム - NetflixClone</title>
       </Head>
       <Header />
       <main>
         <Hero scienceFiction={scienceFiction} />
-        <div className={styles.rows}>
-          <Row title="人気急上昇の作品" movies={trending} />
-          <Row title="アドベンチャー" movies={adventure} />
-          <Row title="アニメ" movies={animation} />
-          <Row title="コメディ" movies={comedy} />
-          <Row title="ドキュメンタリー" movies={documentary} />
-          <Row title="ラブロマンス" movies={romance} />
-          <Row title="サイエンスフィクション" movies={scienceFiction} />
+        <div>
+          <Carousel title="人気急上昇の作品" movies={trending} />
+          <Carousel title="アドベンチャー" movies={adventure} />
+          <Carousel title="アニメ" movies={animation} />
+          <Carousel title="コメディ" movies={comedy} />
+          <Carousel title="ドキュメンタリー" movies={documentary} />
+          <Carousel title="ラブロマンス" movies={romance} />
+          <Carousel title="サイエンスフィクション" movies={scienceFiction} />
         </div>
       </main>
     </div>
