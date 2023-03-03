@@ -1,0 +1,53 @@
+.title {
+  padding: 0 0 0 4%;
+  font-size: 1.4vw;
+  margin-bottom: 1vw;
+}
+.carousel {
+  position: relative;
+}
+.thumbnails {
+  overflow-x: scroll;
+  display: flex;
+}
+.space {
+  /* width: 4%; */
+  flex: 0 0 4%;
+}
+.scrollBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s;
+}
+.scrollBtn:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.prevBtn {
+  left: 0;
+}
+.nextBtn {
+  right: 0;
+}
+.scrollIcon {
+  opacity: 0;
+  visibility: hidden;
+}
+.carousel:hover .scrollIcon {
+  opacity: 1;
+  visibility: visible;
+  width: 2vw;
+  height: 2vw;
+  transition: transform 0.3s;
+}
+.prevBtn:hover .scrollIcon,
+.nextBtn:hover .scrollIcon {
+  transform: scale(1.3);
+}

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { Movie } from '../types/movie';
 import Thumbnail from './Thumbnail';
+import styles from '../styles/components/Carousel.module.css';
 
 type Props = {
   title: string;
@@ -18,8 +19,8 @@ const Row = ({ title, movies }: Props) => {
       const { scrollLeft, clientWidth } = rowRef.current;
       const scrollPosition =
         direction === 'left'
-          ? scrollLeft - clientWidth
-          : scrollLeft + clientWidth;
+          ? scrollLeft - clientWidth * 0.92
+          : scrollLeft + clientWidth * 0.92;
       rowRef.current.scrollTo({
         left: scrollPosition,
         behavior: 'smooth',
@@ -28,30 +29,30 @@ const Row = ({ title, movies }: Props) => {
   };
 
   return (
-    <div className="space-y-1">
-      <h2 className="lg:text-lg">{title}</h2>
-      <div className="relative group">
-        {isScrolled && (
-          <button
-            className="absolute left-0 z-10 invisible w-6 h-full -translate-y-1/2 opacity-0 top-1/2 hover:bg-black/60 bg-black/40 group-hover:visible group-hover:opacity-100 lg:w-12"
-            onClick={() => handleScroll('left')}
-          >
-            <BsChevronLeft className="w-4 h-full m-auto transition hover:scale-150 lg:w-8" />
-          </button>
-        )}
-        <div
-          className="flex items-center space-x-0.5 overflow-hidden md:space-x-2"
-          ref={rowRef}
-        >
+    <div className={styles.container}>
+      <h2 className={styles.title}>{title}</h2>
+
+      <div className={styles.carousel}>
+        <div className={styles.thumbnails} ref={rowRef}>
+          <div className={styles.space} />
           {movies.map((movie) => (
             <Thumbnail key={movie.id} movie={movie} />
           ))}
+          <div className={styles.space} />
         </div>
+        {isScrolled && (
+          <button
+            className={`${styles.scrollBtn} ${styles.prevBtn}`}
+            onClick={() => handleScroll('left')}
+          >
+            <BsChevronLeft className={styles.scrollIcon} />
+          </button>
+        )}
         <button
-          className="absolute right-0 z-10 invisible w-6 h-full -translate-y-1/2 opacity-0 top-1/2 hover:bg-black/60 bg-black/40 group-hover:visible group-hover:opacity-100 lg:w-12"
+          className={`${styles.scrollBtn} ${styles.nextBtn}`}
           onClick={() => handleScroll('right')}
         >
-          <BsChevronRight className="w-4 h-full m-auto transition hover:scale-150 lg:w-8" />
+          <BsChevronRight className={styles.scrollIcon} />
         </button>
       </div>
     </div>
