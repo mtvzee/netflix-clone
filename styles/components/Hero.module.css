@@ -12,9 +12,9 @@
 .info {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   left: 4%;
   width: 35%;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   row-gap: 1.5vw;
@@ -31,4 +31,42 @@
   display: flex;
   align-items: center;
   column-gap: 1vw;
+}
+.playBtn {
+  padding: 0.5vw 1.4vw;
+  border-radius: 4px;
+  background: rgba(256, 256, 256, 1);
+  color: #000;
+  display: flex;
+  align-items: center;
+  column-gap: 0.2vw;
+}
+.playBtn:hover {
+  background: rgba(256, 256, 256, 0.8);
+}
+.playIcon {
+  width: 2vw;
+  height: 2vw;
+}
+.playText {
+  font-size: 1.2vw;
+}
+
+.infoBtn {
+  padding: 0.5vw 1.4vw;
+  background: rgba(109, 109, 110, 0.7);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  column-gap: 0.6vw;
+}
+.infoBtn:hover {
+  background: rgba(109, 109, 110, 0.5);
+}
+.infoIcon {
+  width: 2vw;
+  height: 2vw;
+}
+.infoText {
+  font-size: 1.2vw;
 }

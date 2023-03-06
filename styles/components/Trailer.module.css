@@ -1,0 +1,15 @@
+.container {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+}
+
+.backBtn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+.backIcon {
+  width: 4vw;
+  height: 4vw;
+}

@@ -1,26 +1,35 @@
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Movie } from '../types/movie';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import PlayButton from './button/PlayButton';
-import { Button, useDisclosure } from '@chakra-ui/react';
-import ModalDialog from './ModalDialog';
 import styles from '../styles/components/Hero.module.css';
+import { BsFillPlayFill } from 'react-icons/bs';
+import { TrailerData } from '../types/trailerData';
+import { TrailerInfo } from '../types/trailerInfo';
 
 type Props = {
   scienceFiction: Movie[];
+  setTrailer: Dispatch<SetStateAction<TrailerData>>;
+  setInfoModal: Dispatch<SetStateAction<TrailerInfo>>;
 };
 
-const Hero = ({ scienceFiction }: Props) => {
+const Hero = ({
+  scienceFiction,
+  setTrailer: setTrailer,
+  setInfoModal: setInfoModal,
+}: Props) => {
   const [hero, setHero] = useState<Movie | null>(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   // ヒーローイメージに表示する映画情報をランダムで取得する
   useEffect(() => {
     const randomNum = Math.floor(Math.random() * scienceFiction.length);
     scienceFiction[randomNum].overview !== '' &&
       setHero(scienceFiction[randomNum]);
-  }, [scienceFiction]);
+  }, [scienceFiction, setTrailer]);
+
+  useEffect(() => {
+    setTrailer({ show: false, id: hero?.id });
+  }, [setTrailer, hero?.id]);
 
   return (
     <div className={styles.container}>
@@ -30,6 +39,7 @@ const Hero = ({ scienceFiction }: Props) => {
         }`}
         alt={hero?.original_title ?? ''}
         className={styles.heroImage}
+        priority
         width={3000}
         height={2000}
       />
@@ -40,19 +50,22 @@ const Hero = ({ scienceFiction }: Props) => {
           {hero?.overview != null && hero?.overview.length > 100 && '...'}
         </p>
         <div className={styles.buttons}>
-          <PlayButton id={hero?.id} />
-          <Button
-            onClick={onOpen}
-            bg="gray.600"
-            opacity="0.8"
-            size={{ base: 'sm', md: 'lg' }}
-            gap="1"
-            _hover={{ opacity: '.6' }}
+          {/* <PlayButton id={hero?.id} />  */}
+          <button
+            className={styles.playBtn}
+            onClick={() => setTrailer({ show: true, id: hero?.id })}
           >
-            <AiOutlineInfoCircle className="w-6 h-6" />
-            <span className="text-sm md:text-lg">もっと見る</span>
-          </Button>
-          <ModalDialog id={hero?.id} isOpen={isOpen} onClose={onClose} />
+            <BsFillPlayFill className={styles.playIcon} />
+            <span className={styles.playText}>再生</span>
+          </button>
+          <button
+            className={styles.infoBtn}
+            onClick={() => setInfoModal({ show: true, id: hero?.id })}
+          >
+            <AiOutlineInfoCircle className={styles.infoIcon} />
+            <span className={styles.infoText}>もっと見る</span>
+          </button>
+          {/* <ModalDialog id={hero?.id} isOpen={isOpen} onClose={onClose} /> */}
         </div>
       </div>
     </div>

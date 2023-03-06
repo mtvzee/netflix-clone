@@ -7,6 +7,12 @@ import { requests } from '../constants';
 import { Movie } from '../types/movie';
 import styles from '../styles/pages/Home.module.css';
 import Footer from '../components/Footer';
+import { useState } from 'react';
+import InfoModal from '../components/TrailerInfoModal';
+import Trailer from '../components/Trailer';
+import { TrailerData } from '../types/trailerData';
+import { TrailerInfo } from '../types/trailerInfo';
+import TrailerInfoModal from '../components/TrailerInfoModal';
 
 type Props = {
   trending: Movie[];
@@ -27,6 +33,11 @@ const Home: NextPage<Props> = ({
   romance,
   scienceFiction,
 }) => {
+  const [trailer, setTrailer] = useState<TrailerData>({ show: false });
+  const [infoModal, setInfoModal] = useState<TrailerInfo>({
+    show: false,
+  });
+
   return (
     <div>
       <Head>
@@ -34,7 +45,11 @@ const Home: NextPage<Props> = ({
       </Head>
       <Header />
       <main>
-        <Hero scienceFiction={scienceFiction} />
+        <Hero
+          scienceFiction={scienceFiction}
+          setTrailer={setTrailer}
+          setInfoModal={setInfoModal}
+        />
         <div>
           <Carousel title="人気急上昇の作品" movies={trending} />
           <Carousel title="アドベンチャー" movies={adventure} />
@@ -46,6 +61,14 @@ const Home: NextPage<Props> = ({
         </div>
       </main>
       <Footer />
+      {trailer.show && <Trailer id={trailer.id} setTrailer={setTrailer} />}
+      {infoModal.show && (
+        <TrailerInfoModal
+          id={trailer.id}
+          setTrailer={setTrailer}
+          setInfoModal={setInfoModal}
+        />
+      )}
     </div>
   );
 };
