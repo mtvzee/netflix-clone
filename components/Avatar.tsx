@@ -10,9 +10,11 @@ const Avatar = ({ src }: Props) => {
       <Image
         src={src}
         alt="avatar"
-        layout="fill"
-        objectFit="contain"
-        className="rounded"
+        fill
+        sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+        className="relative object-contain rounded w-7 h-7"
       />
     </div>
   );

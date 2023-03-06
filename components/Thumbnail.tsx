@@ -18,9 +18,12 @@ const Thumbnail = ({ movie }: Props) => {
           src={`https://image.tmdb.org/t/p/w500${
             movie.backdrop_path || movie.poster_path
           }`}
-          alt={movie.title}
+          alt={movie.title ?? ''}
           className={styles.img}
           fill
+          sizes="(max-width: 768px) 100vw,
+          (max-width: 1200px) 50vw,
+          33vw"
           onClick={onOpen}
         />
       </div>
