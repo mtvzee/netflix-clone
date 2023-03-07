@@ -5,10 +5,9 @@ import { fetchMovieDetails } from '../utils/fetchMovieDetails';
 import styles from '../styles/components/TrailerInfoModal.module.css';
 import Image from 'next/image';
 import { AiOutlineCheck, AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
-import RatingButton from './button/RatingButton';
-import Trailer from './Trailer';
 import { TrailerData } from '../types/trailerData';
 import { BsFillPlayFill } from 'react-icons/bs';
+import RatingButton from './RatingButton';
 
 type Props = {
   id?: number;
@@ -27,8 +26,11 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
   }, [id]);
   return (
     <div>
-      <div className={styles.overlay}>
-        <div className={styles.container}>
+      <div
+        className={styles.overlay}
+        onClick={() => setInfoModal({ show: false, id: id })}
+      >
+        <div className={styles.container} onClick={(e) => e.stopPropagation()}>
           <div className={styles.imgWrapper}>
             <button onClick={() => setInfoModal({ show: false, id: id })}>
               <AiOutlineClose className={styles.closeIcon} />
@@ -40,7 +42,6 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
               alt="movie"
               fill
               className={styles.img}
-              // className="relative  h-[30vh] md:h-[40vh] lg:h-[50vh]"
             />
             <div className={styles.backgroundShadow} />
             <div className={styles.imgFeatures}>
@@ -54,13 +55,13 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
                   <span className={styles.playText}>再生</span>
                 </button>
                 <button
-                  className="p-2 border-2 rounded-full border-neutral-400 bg-neutral-700/80 hover:border-neutral-300"
+                  className={styles.myListBtn}
                   onClick={() => setIsAddedToMyList(!isAddedToMyList)}
                 >
                   {isAddedToMyList ? (
-                    <AiOutlineCheck className="w-4 h-4 text-white md:h-6 md:w-6" />
+                    <AiOutlineCheck className={styles.myListIcon} />
                   ) : (
-                    <AiOutlinePlus className="w-4 h-4 text-white md:h-6 md:w-6" />
+                    <AiOutlinePlus className={styles.myListIcon} />
                   )}
                 </button>
                 <RatingButton />
@@ -68,25 +69,27 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
             </div>
           </div>
 
-          <div className="flex px-10 pt-2 space-x-6 text-white md:space-x-8">
-            <div className="space-y-6 basis-3/5">
-              <div className="space-x-2 md:flex md:items-center">
-                <p className="text-lg text-green-400">
+          <div className={styles.detail}>
+            <div className={styles.detailLeft}>
+              <div className={styles.metaData}>
+                <div className={styles.match}>
                   マッチ度:
-                  {movieDetails != null && movieDetails?.vote_average * 10}%
-                </p>
+                  {movieDetails != null &&
+                    (movieDetails?.vote_average * 10).toFixed()}
+                  %
+                </div>
                 <span>{movieDetails?.release_date?.slice(0, 4)}</span>
-                <span className="px-2 text-sm border rounded">HD</span>
+                <span className={styles.quality}>HD</span>
               </div>
-              <p>{movieDetails?.overview}</p>
+              <p className={styles.summary}>{movieDetails?.overview}</p>
             </div>
-            <div className="space-y-6 basis-2/5">
+            <div className={styles.detailRight}>
               <h2>
-                <span className="text-gray-400">タイトル:</span>
+                <span className={styles.category}>タイトル:</span>
                 {movieDetails?.original_title}
               </h2>
               <div>
-                <span className="text-gray-400">ジャンル:</span>
+                <span className={styles.category}>ジャンル:</span>
                 {movieDetails?.genres?.map((genre) => genre.name).join(', ')}
               </div>
             </div>
