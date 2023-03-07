@@ -1,7 +1,5 @@
-import { useDisclosure } from '@chakra-ui/react';
 import Image from 'next/image';
 import { Movie } from '../types/movie';
-import ModalDialog from './ModalDialog';
 import styles from '../styles/components/Thumbnail.module.css';
 
 type Props = {
@@ -9,8 +7,6 @@ type Props = {
 };
 
 const Thumbnail = ({ movie }: Props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <div className={styles.container}>
       <div className={styles.imgWrapper}>
@@ -24,11 +20,11 @@ const Thumbnail = ({ movie }: Props) => {
           sizes="(max-width: 768px) 100vw,
           (max-width: 1200px) 50vw,
           33vw"
-          onClick={onOpen}
+          // onClick={onOpen}
         />
       </div>
 
-      <ModalDialog id={movie.id} isOpen={isOpen} onClose={onClose} />
+      {/* <ModalDialog id={movie.id} isOpen={isOpen} onClose={onClose} /> */}
     </div>
   );
 };
