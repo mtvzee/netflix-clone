@@ -4,10 +4,11 @@ import { TrailerInfo } from '../types/trailerInfo';
 import { fetchMovieDetails } from '../utils/fetchMovieDetails';
 import styles from '../styles/components/TrailerInfoModal.module.css';
 import Image from 'next/image';
-import { AiOutlineCheck, AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 import { TrailerData } from '../types/trailerData';
 import { BsFillPlayFill } from 'react-icons/bs';
 import RatingButton from './RatingButton';
+import MyListButton from './MyListButton';
 
 type Props = {
   id?: number;
@@ -17,7 +18,6 @@ type Props = {
 
 const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
-  const [isAddedToMyList, setIsAddedToMyList] = useState(false);
 
   useEffect(() => {
     if (id != null) {
@@ -54,16 +54,7 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
                   <BsFillPlayFill className={styles.playIcon} />
                   <span className={styles.playText}>再生</span>
                 </button>
-                <button
-                  className={styles.myListBtn}
-                  onClick={() => setIsAddedToMyList(!isAddedToMyList)}
-                >
-                  {isAddedToMyList ? (
-                    <AiOutlineCheck className={styles.myListIcon} />
-                  ) : (
-                    <AiOutlinePlus className={styles.myListIcon} />
-                  )}
-                </button>
+                <MyListButton />
                 <RatingButton />
               </div>
             </div>
