@@ -10,18 +10,30 @@
 .container {
   max-width: 850px;
   height: 100%;
-  margin: 2rem auto 0;
+  margin: 2rem 1% 0;
   background: #181818;
   border-radius: 6px 6px 0 0;
   overflow: hidden;
 }
-.closeIcon {
-  width: 36px;
-  height: 36px;
+@media (min-width: 768px) {
+  .container {
+    margin: 2rem auto 0;
+  }
 }
 .imgWrapper {
   position: relative;
   aspect-ratio: 16/9;
+}
+.closeIcon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  background: #000;
+  border-radius: 50%;
+  padding: 8px;
 }
 .img {
   object-fit: cover;
@@ -39,7 +51,7 @@
 }
 .title {
   margin-bottom: 2vw;
-  font-size: 1.5vw;
+  font-size: 1.8vw;
 }
 .buttons {
   display: flex;
@@ -49,7 +61,7 @@
 .playBtn {
   max-height: 42px;
   min-height: 32px;
-  padding: 0.3vw 2vw;
+  padding: 0.8vw 2vw;
   border-radius: 4px;
   background: rgba(256, 256, 256, 1);
   color: #000;
@@ -65,5 +77,71 @@
   height: 2vw;
 }
 .playText {
-  font-size: 1.2vw;
+  font-size: 1.6vw;
+}
+.myListBtn {
+  max-height: 42px;
+  max-width: 42px;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0.6vw;
+  background: rgba(42, 42, 42, 0.6);
+  border: 2px solid hsla(0, 0%, 100%, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.myListBtn:hover {
+  border-color: #fff;
+}
+.myListIcon {
+  width: 2vw;
+  height: 2vw;
+}
+
+.detail {
+  display: flex;
+  padding: 0 3rem;
+  column-gap: 2rem;
+}
+
+.detailLeft {
+  flex: 0 0 60%;
+}
+.metaData {
+  margin: 0.8rem 0;
+  font-size: 16px;
+}
+.metaData > * {
+  margin-right: 0.5rem;
+}
+@media (min-width: 768px) {
+  .metaData {
+    display: flex;
+    align-items: center;
+  }
+}
+.match {
+  color: #46d369;
+}
+.quality {
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 14px;
+}
+.summary {
+  font-size: 14px;
+}
+
+.detailRight {
+  flex: 1 1 auto;
+}
+.detailRight > * {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.category {
+  color: #777;
 }

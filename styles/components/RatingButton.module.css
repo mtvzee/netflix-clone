@@ -1,0 +1,44 @@
+.container {
+  position: relative;
+  max-height: 42px;
+  max-width: 42px;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0.6vw;
+  background: rgba(42, 42, 42, 0.6);
+  border: 2px solid hsla(0, 0%, 100%, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ratingIcon {
+  width: 2vw;
+  height: 2vw;
+}
+.selectRatingContainer {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.6);
+  transition: opacity 0.5s 0.5s, transform 0.5s 0.5s;
+}
+.container:hover .selectRatingContainer {
+  padding: 0.2vw 0.8vw;
+  background: rgb(35, 35, 35);
+  border-radius: 3vw;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6), 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.selectRatingBtn {
+  padding: 1vw;
+  border-radius: 50%;
+}
+.selectRatingBtn:hover {
+  background: rgba(125, 125, 125, 0.2);
+}
