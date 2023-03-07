@@ -1,6 +1,6 @@
 .container {
   flex: 0 0 calc(92% / 3);
-  padding: 0 2px;
+  padding: 0 3px;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
