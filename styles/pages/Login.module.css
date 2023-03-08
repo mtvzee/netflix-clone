@@ -1,0 +1,152 @@
+.container {
+  height: 100vh;
+}
+.backdrop {
+  object-fit: cover;
+  z-index: -2;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+}
+@media (min-width: 768px) {
+  .header {
+    height: 90px;
+  }
+}
+.logo {
+  height: 100%;
+  margin-left: 3%;
+  cursor: pointer;
+}
+
+.loginBox {
+  width: 100%;
+  height: 100%;
+  padding: 95px 5% 30px;
+  background: #000;
+}
+@media (min-width: 768px) {
+  .loginBox {
+    width: 450px;
+    height: 660px;
+    margin: 90px auto;
+    padding: 60px 68px 40px;
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 28px;
+}
+
+.inputWrapper {
+  margin-bottom: 16px;
+}
+.inputLabel {
+  position: relative;
+}
+.input {
+  height: 50px;
+  width: 100%;
+  padding: 16px 20px 0;
+  outline: none;
+  border-radius: 4px;
+  background: #333;
+}
+.errorLine {
+  border-bottom: 2px solid #e87c03;
+}
+.placeLabel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  color: #8c8c8c;
+  pointer-events: none;
+  transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
+}
+.input:not(:placeholder-shown) ~ .placeLabel,
+.input:focus ~ .placeLabel {
+  font-size: 11px;
+  top: 7px;
+  transform: translateY(0);
+}
+.errorMsg {
+  padding: 6px 3px;
+  font-size: 13px;
+  color: #e87c03;
+}
+
+.loginBtn {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 4px;
+  background: #e50914;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.remember {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #b3b3b3;
+  accent-color: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.support {
+  cursor: pointer;
+}
+.support:hover {
+  text-decoration: underline;
+}
+.register {
+  margin-bottom: 13px;
+  color: #737373;
+  font-size: 16px;
+}
+.registerLink {
+  color: #fff;
+}
+.registerLink:hover {
+  text-decoration: underline;
+}
+
+.recaptchaTerms {
+  margin-bottom: 13px;
+  color: #8c8c8c;
+  font-size: 13px;
+}
+.detail {
+  color: #0080ff;
+}
+.detailHidden {
+  display: none;
+}
+
+.recaptchaDescription {
+  color: #8c8c8c;
+  font-size: 13px;
+}
+.blueLink {
+  color: #0080ff;
+  cursor: pointer;
+}
+.blueLink:hover {
+  text-decoration: underline;
+}

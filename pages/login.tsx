@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { auth } from '../firebase';
+import styles from '../styles/pages/Login.module.css';
 
 type FormInput = {
   email: string;
@@ -21,7 +22,7 @@ const Login = () => {
     setValue,
     formState: { errors },
   } = useForm<FormInput>();
-  const [signInWithEmailAndPassword,  error] =
+  const [signInWithEmailAndPassword, error] =
     useSignInWithEmailAndPassword(auth);
 
   useEffect(() => {
@@ -38,128 +39,118 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className={styles.container}>
       <Head>
-        <title>Netflix</title>
+        <title>NetflixClone</title>
       </Head>
-      <div className="hidden -z-10 md:fixed md:inset-0 md:block md:opacity-60">
+      <Image
+        src="https://rb.gy/p2hphi"
+        alt="background-image"
+        className={styles.backdrop}
+        fill
+      />
+      <div className={styles.overlay} />
+      <header className={styles.header}>
         <Image
-          src="https://rb.gy/p2hphi"
-          alt="background-image"
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
-      <header className="absolute top-0 w-full px-4 py-1 md:px-6 md:py-3">
-        <div
-          className="relative w-48 h-20 cursor-pointer"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+          alt="logo"
+          className={styles.logo}
+          width={167}
+          height={45}
           onClick={() => router.push('/signup')}
-        >
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-            alt="logo"
-            layout="fill"
-            objectFit="contain"
-          />
-        </div>
+        />
       </header>
-      <div className="w-[90%] space-y-8 md:max-w-lg md:bg-black/70 md:p-16 md:rounded">
-        <h1 className="text-4xl font-bold">ログイン</h1>
-        {error && (
+      <div className={styles.loginBox}>
+        <h1 className={styles.title}>ログイン</h1>
+        {/* {error && (
           <p className="p-5 bg-orange-400 rounded-md">
             申し訳ありません。こちらのメールアドレスで登録したアカウントが見つかりません。もう一度お試しになるか、
-            <Link href="/signup">
-              <a className="underline">新しいアカウントをご登録ください。</a>
+            <Link href="/signup" className="underline">
+              新しいアカウントをご登録ください。
             </Link>
           </p>
-        )}
+        )} */}
         <form
-          className="flex flex-col space-y-10"
+          // className="flex flex-col space-y-10"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="flex flex-col space-y-5 ">
-            <label>
+          <div className={styles.inputWrapper}>
+            <div className={styles.inputLabel}>
               <input
                 type="email"
-                placeholder="メールアドレス"
-                className={`w-full p-4 rounded outline-none bg-neutral-700 ${
-                  errors.email && 'border-b-2 border-b-orange-500'
+                placeholder=" "
+                className={`${styles.input} ${
+                  errors.email && styles.errorLine
                 }`}
                 {...register('email', { required: true })}
               />
-              {errors.email && (
-                <p className="t-1 text-[13px] text-orange-500">
-                  有効なメールアドレスを入力してください。
-                </p>
-              )}
-            </label>
-            <label>
+              <label className={styles.placeLabel}>
+                メールアドレスまたは携帯電話番号
+              </label>
+            </div>
+            {errors.email && (
+              <p className={styles.errorMsg}>
+                有効なメールアドレスまたは電話番号を入力してください。
+              </p>
+            )}
+          </div>
+          <div className={styles.inputWrapper}>
+            <div className={styles.inputLabel}>
               <input
                 type="password"
-                placeholder="パスワード"
-                className={`w-full p-4 rounded outline-none bg-neutral-700 ${
-                  errors.password && 'border-b-2 border-b-orange-500'
+                placeholder=" "
+                className={`${styles.input} ${
+                  errors.password && styles.errorLine
                 }`}
                 {...register('password', { required: true })}
               />
-              {errors.password && (
-                <p className="pt-1 text-[13px] text-orange-500">
-                  パスワードは4文字以上60文字以内でなければいけません。
-                </p>
-              )}
-            </label>
-          </div>
-          <div className="space-y-4">
-            <button className="w-full py-3.5 text-xl bg-red-600 rounded">
-              ログイン
-            </button>
-            <div className="flex items-center justify-between">
-              <label className="space-x-2">
-                <input type="checkbox" className="scale-150 accent-current" />
-                <span className="text-neutral-400">ログインしたままにする</span>
-              </label>
-              <span className="cursor-pointer text-neutral-400 hover:underline">
-                サポートが必要ですか？
-              </span>
+              <label className={styles.placeLabel}>パスワード</label>
             </div>
+            {errors.password && (
+              <p className={styles.errorMsg}>
+                パスワードは4文字以上60文字以内でなければいけません。
+              </p>
+            )}
+          </div>
+
+          <button className={styles.loginBtn}>ログイン</button>
+          <div className={styles.remember}>
+            <label>
+              <input type="checkbox" />
+              <span>ログインしたままにする</span>
+            </label>
+            <span className={styles.support}>サポートが必要ですか？</span>
           </div>
         </form>
-        <div className="space-y-3 text-neutral-400">
-          <p className="text-lg">
-            初めてご利用ですか？
-            <Link href="/signup">
-              <a className="text-xl text-white cursor-pointer hover:underline">
-                新規登録はこちら
-              </a>
-            </Link>
+
+        <p className={styles.register}>
+          初めてご利用ですか？
+          <Link href="/signup" className={styles.registerLink}>
+            新規登録はこちら
+          </Link>
+        </p>
+
+        <p className={styles.recaptchaTerms}>
+          ユーザーがロボットではないことを確認するため、このページはGoogle
+          reCAPTCHAを使用しています。
+          <span
+            className={`${styles.detail} ${detail && styles.detailHidden}`}
+            onClick={() => setDetail(true)}
+          >
+            詳細を見る
+          </span>
+        </p>
+
+        {detail && (
+          <p className={styles.recaptchaDescription}>
+            Google reCAPTCHAにより収集される情報は、Googleの
+            <span className={styles.blueLink}>プライバシーポリシー</span>
+            および
+            <span className={styles.blueLink}>利用規約</span>
+            の対象となり、reCAPTCHAサービスの提供、管理、向上ならびに一般的なセキュリティのために使用されます
+            (Googleのパーソナライズド広告には使用されません)。
           </p>
-          <p className="text-sm leading-tight">
-            ユーザーがロボットではないことを確認するため、このページはGoogle
-            reCAPTCHAを使用しています。
-            <span
-              className={`text-blue-600 cursor-pointer hover:underline ${
-                detail && 'hidden'
-              }`}
-              onClick={() => setDetail(true)}
-            >
-              詳細を見る
-            </span>
-          </p>
-          {detail && (
-            <p className="text-sm">
-              Google reCAPTCHAにより収集される情報は、Googleの
-              <span className="text-blue-700 cursor-pointer hover:underline">
-                プライバシーポリシー
-              </span>
-              および
-              <span className="text-blue-700 cursor-pointer hover:underline">
-                利用規約
-              </span>
-              の対象となり、reCAPTCHAサービスの提供、管理、向上ならびに一般的なセキュリティのために使用されます
-              (Googleのパーソナライズド広告には使用されません)。
-            </p>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );
