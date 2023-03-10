@@ -40,7 +40,7 @@ const Registration = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>NetflixClone</title>
+        <title>MovieClone</title>
       </Head>
       <header className={styles.header}>
         <div className={styles.logoImgWrapper}>

@@ -41,7 +41,7 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>NetflixClone</title>
+        <title>MovieClone</title>
       </Head>
       <Image
         src="https://rb.gy/p2hphi"

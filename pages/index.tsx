@@ -41,7 +41,7 @@ const Home: NextPage<Props> = ({
   return (
     <div>
       <Head>
-        <title>ホーム - NetflixClone</title>
+        <title>ホーム - MovieClone</title>
       </Head>
       <Header />
       <main>
