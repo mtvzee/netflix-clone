@@ -75,7 +75,7 @@
   left: 20px;
   color: #8c8c8c;
   pointer-events: none;
-  transition: top 0.1s ease, transform 0.1s ease;
+  transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
 }
 .input:not(:placeholder-shown) ~ .placeLabel,
 .input:focus ~ .placeLabel {
