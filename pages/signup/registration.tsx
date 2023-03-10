@@ -49,6 +49,7 @@ const Registration = () => {
             alt="logo"
             fill
             className={styles.logoImg}
+            onClick={() => router.push('/signup')}
           />
         </div>
         <Link href="/login" className={styles.login}>
