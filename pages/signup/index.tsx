@@ -79,39 +79,49 @@ const SignUp = () => {
       <div className={styles.box}>
         <h1 className={styles.textL}>
           映画やTV番組、
-          <br className={styles.textLbr} />
+          <br className={styles.br} />
           アニメが見放題
         </h1>
         <h2 className={styles.textM}>
           映画やドラマをもっと自由に。
-          <br className={styles.textMbr} />
+          <br className={styles.br} />
           いつでもキャンセルOK。
         </h2>
-        <h3 className={styles.textS}>
-          まもなくご視聴いただけます!
-          メールアドレスを入力してメンバーシップを開始、または再開してください。
-        </h3>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <label className={styles.formLabel}>
-            <input
-              type="email"
-              placeholder="メールアドレス"
-              className={`${styles.formInput} ${
-                errors.email && styles.errorInput
-              }`}
-              {...register('email', { required: true })}
-            />
-            {errors.email && (
-              <p className={styles.errorInputMsg}>
-                メールアドレスの入力が必要です。
-              </p>
-            )}
-          </label>
-          <button className={styles.signUpBtn}>
-            <span className={styles.signUpText}>今すぐ始める</span>
-            <BsChevronRight className={styles.signUpIcon} />
-          </button>
-        </form>
+        <div className={styles.bottomWrapper}>
+          <h3 className={styles.textS}>
+            まもなくご視聴いただけます!
+            メールアドレスを入力してメンバーシップを開始、または再開してください。
+          </h3>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.inputWrapper}>
+              <div className={styles.inputLabel}>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder=" "
+                  className={`${styles.textField} ${
+                    errors.email && styles.errorInput
+                  }`}
+                  {...register('email', { required: true })}
+                />
+                <label htmlFor="email" className={styles.placeholderLabel}>
+                  メールアドレス
+                </label>
+              </div>
+              {errors.email && (
+                <p className={styles.errorMsg}>
+                  メールアドレスの入力が必要です。
+                </p>
+              )}
+            </div>
+
+            <button className={styles.signUpBtn}>
+              <span className={styles.signUpText}>今すぐ始める</span>
+              <BsChevronRight className={styles.signUpIcon} />
+            </button>
+          </form>
+
+        </div>
       </div>
     </div>
   );

@@ -15,8 +15,12 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient(0deg, transparent 50%, rgba(0, 0, 0, 0.7)),
-    radial-gradient(50% 100%, transparent 0, rgba(0, 0, 0, 0.7) 100%);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
   z-index: -1;
 }
 .header {
@@ -24,23 +28,32 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 65px;
-  padding: 0 5%;
+  height: 5rem;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   .header {
-    height: 100px;
-    padding: 0 3.5rem;
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1250px) {
+  .header {
+    padding: 0 10rem;
   }
 }
 .logo {
   position: relative;
-  width: 11vw;
-  min-width: 90px;
-  height: 100%;
+  width: 5.5625rem;
+  height: 1.5rem;
+}
+@media (min-width: 960px) {
+  .logo {
+    width: 9.25rem;
+    height: 2.5rem;
+  }
 }
 .logoImg {
   object-fit: contain;
@@ -53,7 +66,7 @@
 .lang {
   padding: 0.25rem 0.5rem;
   background: #000;
-  border: 1px solid #fff;
+  border: 1px solid #606060;
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -75,67 +88,67 @@
 }
 
 .loginBtn {
-  background: #e50914;
-  padding: 0.25rem 0.5rem;
+  min-height: 2rem;
+  padding: 0.25rem 1rem;
   border-radius: 3px;
+  background: #e50914;
+  font-size: 0.875rem;
   font-weight: 400;
+  line-height: 1.7;
 }
-@media (min-width: 768px) {
-  .loginBtn {
-    padding: 7px 17px;
-  }
+.loginBtn:hover {
+  background: #c11119;
 }
 
 .box {
-  max-width: 950px;
+  margin: auto;
+  max-width: calc(100% - 3rem);
+}
+@media (min-width: 600px) {
+  .box {
+    max-width: calc(100% - 4rem);
+  }
+}
+.bottomWrapper {
+  text-align: center;
+  max-width: 61.5rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 .textL {
   font-size: 2rem;
-  line-height: 1.1;
+  font-weight: 700;
   text-align: center;
 }
-.textLbr {
-  display: none;
-}
 .textM {
-  max-width: 640px;
-  margin: 1rem auto;
-  font-size: 18px;
+  margin: 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 400;
   text-align: center;
 }
 .textS {
-  max-width: 450px;
   margin: 0 auto 30px;
-  font-size: 18px;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
 }
-@media (min-width: 768px) {
-  .textL {
-    font-size: 3.125rem;
+@media (min-width: 500px) {
+  .br {
+    display: none;
   }
-  .textLbr {
-    display: block;
+}
+@media (min-width: 960px) {
+  .textL {
+    font-size: 3rem;
+    font-weight: 900;
   }
   .textM {
-    max-width: 800px;
-    font-size: 1.625rem;
+    font-size: 1.5rem;
+    font-weight: 400;
   }
   .textS {
-    font-size: 23px;
-  }
-}
-@media (min-width: 950px) {
-  .textS {
-    max-width: none;
-    padding: 0 5%;
-    font-size: 1.2rem;
-  }
-}
-@media (min-width: 1450px) {
-  .textL {
-    font-size: 4rem;
-  }
-  .textMbr {
-    display: none;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 
@@ -143,67 +156,87 @@
   display: flex;
   flex-direction: column;
 }
-
-.formLabel {
-  flex: 1 1 100%;
+.inputWrapper {
+  margin-bottom: 1rem;
 }
-.formInput {
+.inputLabel {
+  position: relative;
+}
+.textField {
   width: 100%;
-  height: 48px;
-  padding: 0 10px;
-  color: #000;
+  padding: 1.5rem 1rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(22, 22, 22, 0.7);
+  border: 1px solid rgba(128, 128, 128, 0.7);
+  line-height: 1.5rem;
   outline: none;
 }
-.errorInput {
-  border-bottom: 2px solid #ffa00a;
+.textField:focus {
+  box-shadow: 0 0 0 2px black, 0 0 0 4px #fff;
 }
-.errorInputMsg {
-  margin-top: 4px;
-  color: #ffa00a;
+.placeholderLabel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
+  color: #b7b7b7;
+  transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
+  pointer-events: none;
+}
+.textField:not(:placeholder-shown) ~ .placeholderLabel,
+.textField:focus ~ .placeholderLabel {
+  top: 0.25rem;
+  transform: translateY(0);
+  font-size: 13px;
+}
+.errorInput {
+  border: 1px solid rgb(235, 57, 66);
+}
+.errorMsg {
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  color: rgb(235, 57, 66);
 }
 
 .signUpBtn {
-  min-width: 74px;
-  min-height: 40px;
-  margin: 0.5em auto;
-  padding: 0 1em;
+  width: fit-content;
+  min-height: 3rem;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
   background: #e50914;
-  border-radius: 3px;
+  border-radius: 4px;
+  font-size: 1.125rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  column-gap: 2px;
 }
 .signUpBtn:hover {
-  background: #f40612;
+  background: #c11119;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
 }
-.signUpText {
-  /* width: max-content;  */
-  /* font-size: 18px;
-  flex: 1 1 auto;
-  font-size: 1.875rem; */
-}
 .signUpIcon {
+  width: 20px;
+  height: 20px;
 }
-@media (min-width: 950px) {
+@media (min-width: 600px) {
   .form {
-    flex-direction: row;
-    align-items: center;
-    max-width: 750px;
+    max-width: 36.625rem;
     margin: 0 auto;
+    flex-direction: row;
+    align-items: start;
   }
-  .formLabel{
+  .inputWrapper {
+    margin-right: 0.5rem;
     flex: 1 1 auto;
   }
-  .formInput {
-    height: 60px;
-  }
-  .errorInputMsg {
-    position: absolute;
-  }
   .signUpBtn {
-    font-size: 1.625rem;
-    min-height: 60px;
-    padding: 0 1em;
+    flex: 0 0 auto;
+    font-size: 1.5rem;
+    font-weight: 500;
+    min-height: 3.5rem;
+    padding: 0.75rem 1.5rem;
   }
 }
