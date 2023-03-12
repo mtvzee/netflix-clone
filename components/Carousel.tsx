@@ -1,15 +1,19 @@
-import { useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { Movie } from '../types/movie';
 import Thumbnail from './Thumbnail';
 import styles from '../styles/components/Carousel.module.css';
+import { TrailerData } from '../types/trailerData';
+import { TrailerInfo } from '../types/trailerInfo';
 
 type Props = {
   title: string;
   movies: Movie[];
+  setTrailer: Dispatch<SetStateAction<TrailerData>>;
+  setInfoModal: Dispatch<SetStateAction<TrailerInfo>>;
 };
 
-const Row = ({ title, movies }: Props) => {
+const Row = ({ title, movies, setTrailer, setInfoModal }: Props) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -36,7 +40,12 @@ const Row = ({ title, movies }: Props) => {
         <div className={styles.thumbnails} ref={rowRef}>
           <div className={styles.space} />
           {movies.map((movie) => (
-            <Thumbnail key={movie.id} movie={movie} />
+            <Thumbnail
+              key={movie.id}
+              movie={movie}
+              setTrailer={setTrailer}
+              setInfoModal={setInfoModal}
+            />
           ))}
           <div className={styles.space} />
         </div>

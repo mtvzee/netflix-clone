@@ -8,7 +8,6 @@ import { Movie } from '../types/movie';
 import styles from '../styles/pages/Home.module.css';
 import Footer from '../components/Footer';
 import { useState } from 'react';
-import InfoModal from '../components/TrailerInfoModal';
 import Trailer from '../components/Trailer';
 import { TrailerData } from '../types/trailerData';
 import { TrailerInfo } from '../types/trailerInfo';
@@ -51,13 +50,48 @@ const Home: NextPage<Props> = ({
           setInfoModal={setInfoModal}
         />
         <div>
-          <Carousel title="人気急上昇の作品" movies={trending} />
-          <Carousel title="アドベンチャー" movies={adventure} />
-          <Carousel title="アニメ" movies={animation} />
-          <Carousel title="コメディ" movies={comedy} />
-          <Carousel title="ドキュメンタリー" movies={documentary} />
-          <Carousel title="ラブロマンス" movies={romance} />
-          <Carousel title="サイエンスフィクション" movies={scienceFiction} />
+          <Carousel
+            title="人気急上昇の作品"
+            movies={trending}
+            setTrailer={setTrailer}
+            setInfoModal={setInfoModal}
+          />
+          <Carousel
+            title="アドベンチャー"
+            movies={adventure}
+            setTrailer={setTrailer}
+            setInfoModal={setInfoModal}
+          />
+          <Carousel
+            title="アニメ"
+            movies={animation}
+            setTrailer={setTrailer}
+            setInfoModal={setInfoModal}
+          />
+          <Carousel
+            title="コメディ"
+            movies={comedy}
+            setTrailer={setTrailer}
+            setInfoModal={setInfoModal}
+          />
+          <Carousel
+            title="ドキュメンタリー"
+            movies={documentary}
+            setTrailer={setTrailer}
+            setInfoModal={setInfoModal}
+          />
+          <Carousel
+            title="ラブロマンス"
+            movies={romance}
+            setTrailer={setTrailer}
+            setInfoModal={setInfoModal}
+          />
+          <Carousel
+            title="サイエンスフィクション"
+            movies={scienceFiction}
+            setTrailer={setTrailer}
+            setInfoModal={setInfoModal}
+          />
         </div>
       </main>
       <Footer />

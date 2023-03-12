@@ -63,7 +63,7 @@
   min-height: 32px;
   padding: 0.8vw 2vw;
   border-radius: 4px;
-  background: rgba(256, 256, 256, 1);
+  background: #fff;
   color: #000;
   display: flex;
   align-items: center;

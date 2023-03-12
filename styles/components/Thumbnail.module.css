@@ -1,29 +1,125 @@
 .container {
   flex: 0 0 calc(92% / 3);
   padding: 0 3px;
-  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
 }
 .imgWrapper {
   position: relative;
   aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
 }
+.img {
+  object-fit: cover;
+}
+
+.modalWrapper {
+  position: fixed;
+  width: calc(92% / 2.5);
+  height: auto;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+}
+
 @media (min-width: 768px) {
   .container {
     flex: 0 0 calc(92% / 4);
+  }
+  .modalWrapper {
+    width: calc(92% / 3);
   }
 }
 @media (min-width: 1024px) {
   .container {
     flex: 0 0 calc(92% / 5);
   }
+  .modalWrapper {
+    width: calc(92% / 3.5);
+  }
 }
 @media (min-width: 1280px) {
   .container {
     flex: 0 0 calc(92% / 6);
   }
+  .modalWrapper {
+    width: calc(92% / 4);
+  }
 }
-.img {
-  object-fit: cover;
+
+.modalBottom {
+  padding: 1rem;
+  background: #000;
+  border-radius: 0 0 8px 8px;
+}
+.modalImgWrapper {
+  border-radius: 8px 8px 0 0;
+}
+.Btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.leftBtns {
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+}
+.playBtn {
+  max-height: 42px;
+  max-width: 42px;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0.6vw;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.playBtn:hover {
+  background: rgba(256, 256, 256, 0.8);
+}
+.playIcon {
+  width: 2vw;
+  height: 2vw;
+}
+.detailBtn {
+  max-height: 42px;
+  max-width: 42px;
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0.6vw;
+  background: rgba(42, 42, 42, 0.6);
+  border: 2px solid hsla(0, 0%, 100%, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detailBtn:hover {
+  border-color: #fff;
+}
+.detailIcon {
+  width: 2vw;
+  height: 2vw;
+}
+
+.metaData {
+  display: flex;
+  align-items: center;
+  column-gap: 1vw;
+  margin-bottom: 8px;
+}
+.match {
+  color: #46d369;
+}
+.quality {
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 14px;
 }
