@@ -1,22 +1,20 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { MovieDetails } from '../types/movieDetails';
-import { TrailerInfo } from '../types/trailerInfo';
 import { fetchMovieDetails } from '../utils/fetchMovieDetails';
-import styles from '../styles/components/TrailerInfoModal.module.css';
 import Image from 'next/image';
 import { AiOutlineClose } from 'react-icons/ai';
-import { TrailerData } from '../types/trailerData';
 import { BsFillPlayFill } from 'react-icons/bs';
 import RatingButton from './RatingButton';
 import MyListButton from './MyListButton';
+import styles from '../styles/components/DetailModal.module.css';
 
 type Props = {
-  id?: number;
-  setTrailer: Dispatch<SetStateAction<TrailerData>>;
-  setInfoModal: Dispatch<SetStateAction<TrailerInfo>>;
+  id: number | null;
+  setShowTrailer: Dispatch<SetStateAction<boolean>>;
+  setShowDetailModal: Dispatch<SetStateAction<boolean>>;
 };
 
-const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
+const DetailModal = ({ id, setShowTrailer, setShowDetailModal }: Props) => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
   useEffect(() => {
@@ -26,13 +24,10 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
   }, [id]);
   return (
     <div>
-      <div
-        className={styles.overlay}
-        onClick={() => setInfoModal({ show: false, id: id })}
-      >
+      <div className={styles.overlay} onClick={() => setShowDetailModal(false)}>
         <div className={styles.container} onClick={(e) => e.stopPropagation()}>
           <div className={styles.imgWrapper}>
-            <button onClick={() => setInfoModal({ show: false, id: id })}>
+            <button onClick={() => setShowDetailModal(false)}>
               <AiOutlineClose className={styles.closeIcon} />
             </button>
             <Image
@@ -49,7 +44,7 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
               <div className={styles.buttons}>
                 <button
                   className={styles.playBtn}
-                  onClick={() => setTrailer({ show: true, id: id })}
+                  onClick={() => setShowTrailer(true)}
                 >
                   <BsFillPlayFill className={styles.playIcon} />
                   <span className={styles.playText}>再生</span>
@@ -90,4 +85,4 @@ const TrailerInfoModal = ({ id, setTrailer, setInfoModal }: Props) => {
     </div>
   );
 };
-export default TrailerInfoModal;
+export default DetailModal;

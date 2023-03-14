@@ -4,14 +4,13 @@ import ReactPlayer from 'react-player';
 import { MovieDetails } from '../types/movieDetails';
 import { fetchMovieDetails } from '../utils/fetchMovieDetails';
 import styles from '../styles/components/Trailer.module.css';
-import { TrailerData } from '../types/trailerData';
 
 type Props = {
-  id?: number;
-  setTrailer: Dispatch<SetStateAction<TrailerData>>;
+  id: number | null;
+  setShowTrailer: Dispatch<SetStateAction<boolean>>;
 };
 
-const Trailer = ({ id, setTrailer: setShowTrailer }: Props) => {
+const Trailer = ({ id, setShowTrailer }: Props) => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const Trailer = ({ id, setTrailer: setShowTrailer }: Props) => {
         </div>
         <button
           className={styles.backBtn}
-          onClick={() => setShowTrailer({ show: false, id: id })}
+          onClick={() => setShowTrailer(false)}
         >
           <AiOutlineArrowLeft className={styles.backIcon} />
         </button>
@@ -45,10 +44,7 @@ const Trailer = ({ id, setTrailer: setShowTrailer }: Props) => {
         playing
         controls
       />
-      <button
-        className={styles.backBtn}
-        onClick={() => setShowTrailer({ show: false, id: id })}
-      >
+      <button className={styles.backBtn} onClick={() => setShowTrailer(false)}>
         <AiOutlineArrowLeft className={styles.backIcon} />
       </button>
     </div>

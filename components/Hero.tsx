@@ -4,19 +4,19 @@ import { Movie } from '../types/movie';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import styles from '../styles/components/Hero.module.css';
 import { BsFillPlayFill } from 'react-icons/bs';
-import { TrailerData } from '../types/trailerData';
-import { TrailerInfo } from '../types/trailerInfo';
 
 type Props = {
   scienceFiction: Movie[];
-  setTrailer: Dispatch<SetStateAction<TrailerData>>;
-  setInfoModal: Dispatch<SetStateAction<TrailerInfo>>;
+  setSelectedMovieId: Dispatch<SetStateAction<number | null>>;
+  setShowTrailer: Dispatch<SetStateAction<boolean>>;
+  setShowDetailModal: Dispatch<SetStateAction<boolean>>;
 };
 
 const Hero = ({
   scienceFiction,
-  setTrailer: setTrailer,
-  setInfoModal: setInfoModal,
+  setSelectedMovieId,
+  setShowTrailer,
+  setShowDetailModal,
 }: Props) => {
   const [hero, setHero] = useState<Movie | null>(null);
 
@@ -25,11 +25,13 @@ const Hero = ({
     const randomNum = Math.floor(Math.random() * scienceFiction.length);
     scienceFiction[randomNum].overview !== '' &&
       setHero(scienceFiction[randomNum]);
-  }, [scienceFiction, setTrailer]);
+  }, [scienceFiction]);
 
   useEffect(() => {
-    setTrailer({ show: false, id: hero?.id });
-  }, [setTrailer, hero?.id]);
+    if (hero?.id) {
+      setSelectedMovieId(hero?.id);
+    }
+  }, [setSelectedMovieId, hero?.id]);
 
   return (
     <div className={styles.container}>
@@ -50,22 +52,20 @@ const Hero = ({
           {hero?.overview != null && hero?.overview.length > 100 && '...'}
         </p>
         <div className={styles.buttons}>
-          {/* <PlayButton id={hero?.id} />  */}
           <button
             className={styles.playBtn}
-            onClick={() => setTrailer({ show: true, id: hero?.id })}
+            onClick={() => setShowTrailer(true)}
           >
             <BsFillPlayFill className={styles.playIcon} />
             <span className={styles.playText}>再生</span>
           </button>
           <button
             className={styles.infoBtn}
-            onClick={() => setInfoModal({ show: true, id: hero?.id })}
+            onClick={() => setShowDetailModal(true)}
           >
             <AiOutlineInfoCircle className={styles.infoIcon} />
             <span className={styles.infoText}>もっと見る</span>
           </button>
-          {/* <ModalDialog id={hero?.id} isOpen={isOpen} onClose={onClose} /> */}
         </div>
       </div>
     </div>

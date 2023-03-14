@@ -3,17 +3,22 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { Movie } from '../types/movie';
 import Thumbnail from './Thumbnail';
 import styles from '../styles/components/Carousel.module.css';
-import { TrailerData } from '../types/trailerData';
-import { TrailerInfo } from '../types/trailerInfo';
 
 type Props = {
   title: string;
   movies: Movie[];
-  setTrailer: Dispatch<SetStateAction<TrailerData>>;
-  setInfoModal: Dispatch<SetStateAction<TrailerInfo>>;
+  setSelectedMovieId: Dispatch<SetStateAction<number | null>>;
+  setShowTrailer: Dispatch<SetStateAction<boolean>>;
+  setShowDetailModal: Dispatch<SetStateAction<boolean>>;
 };
 
-const Row = ({ title, movies, setTrailer, setInfoModal }: Props) => {
+const Row = ({
+  title,
+  movies,
+  setSelectedMovieId,
+  setShowTrailer,
+  setShowDetailModal,
+}: Props) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -43,8 +48,9 @@ const Row = ({ title, movies, setTrailer, setInfoModal }: Props) => {
             <Thumbnail
               key={movie.id}
               movie={movie}
-              setTrailer={setTrailer}
-              setInfoModal={setInfoModal}
+              setSelectedMovieId={setSelectedMovieId}
+              setShowTrailer={setShowTrailer}
+              setShowDetailModal={setShowDetailModal}
             />
           ))}
           <div className={styles.space} />

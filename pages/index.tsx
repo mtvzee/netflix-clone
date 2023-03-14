@@ -9,9 +9,8 @@ import styles from '../styles/pages/Home.module.css';
 import Footer from '../components/Footer';
 import { useState } from 'react';
 import Trailer from '../components/Trailer';
-import { TrailerData } from '../types/trailerData';
-import { TrailerInfo } from '../types/trailerInfo';
-import TrailerInfoModal from '../components/TrailerInfoModal';
+import TrailerInfoModal from '../components/DetailModal';
+import DetailModal from '../components/DetailModal';
 
 type Props = {
   trending: Movie[];
@@ -32,10 +31,9 @@ const Home: NextPage<Props> = ({
   romance,
   scienceFiction,
 }) => {
-  const [trailer, setTrailer] = useState<TrailerData>({ show: false });
-  const [infoModal, setInfoModal] = useState<TrailerInfo>({
-    show: false,
-  });
+  const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
+  const [showTrailer, setShowTrailer] = useState(false);
+  const [showDetailModal, setShowDetailModal] = useState(false);
 
   return (
     <div>
@@ -46,61 +44,71 @@ const Home: NextPage<Props> = ({
       <main>
         <Hero
           scienceFiction={scienceFiction}
-          setTrailer={setTrailer}
-          setInfoModal={setInfoModal}
+          setSelectedMovieId={setSelectedMovieId}
+          setShowTrailer={setShowTrailer}
+          setShowDetailModal={setShowDetailModal}
         />
         <div>
           <Carousel
             title="人気急上昇の作品"
             movies={trending}
-            setTrailer={setTrailer}
-            setInfoModal={setInfoModal}
+            setSelectedMovieId={setSelectedMovieId}
+            setShowTrailer={setShowTrailer}
+            setShowDetailModal={setShowDetailModal}
           />
           <Carousel
             title="アドベンチャー"
             movies={adventure}
-            setTrailer={setTrailer}
-            setInfoModal={setInfoModal}
+            setSelectedMovieId={setSelectedMovieId}
+            setShowTrailer={setShowTrailer}
+            setShowDetailModal={setShowDetailModal}
           />
           <Carousel
             title="アニメ"
             movies={animation}
-            setTrailer={setTrailer}
-            setInfoModal={setInfoModal}
+            setSelectedMovieId={setSelectedMovieId}
+            setShowTrailer={setShowTrailer}
+            setShowDetailModal={setShowDetailModal}
           />
           <Carousel
             title="コメディ"
             movies={comedy}
-            setTrailer={setTrailer}
-            setInfoModal={setInfoModal}
+            setSelectedMovieId={setSelectedMovieId}
+            setShowTrailer={setShowTrailer}
+            setShowDetailModal={setShowDetailModal}
           />
           <Carousel
             title="ドキュメンタリー"
             movies={documentary}
-            setTrailer={setTrailer}
-            setInfoModal={setInfoModal}
+            setSelectedMovieId={setSelectedMovieId}
+            setShowTrailer={setShowTrailer}
+            setShowDetailModal={setShowDetailModal}
           />
           <Carousel
             title="ラブロマンス"
             movies={romance}
-            setTrailer={setTrailer}
-            setInfoModal={setInfoModal}
+            setSelectedMovieId={setSelectedMovieId}
+            setShowTrailer={setShowTrailer}
+            setShowDetailModal={setShowDetailModal}
           />
           <Carousel
             title="サイエンスフィクション"
             movies={scienceFiction}
-            setTrailer={setTrailer}
-            setInfoModal={setInfoModal}
+            setSelectedMovieId={setSelectedMovieId}
+            setShowTrailer={setShowTrailer}
+            setShowDetailModal={setShowDetailModal}
           />
         </div>
       </main>
       <Footer />
-      {trailer.show && <Trailer id={trailer.id} setTrailer={setTrailer} />}
-      {infoModal.show && (
-        <TrailerInfoModal
-          id={trailer.id}
-          setTrailer={setTrailer}
-          setInfoModal={setInfoModal}
+      {showTrailer && (
+        <Trailer id={selectedMovieId} setShowTrailer={setShowTrailer} />
+      )}
+      {showDetailModal && (
+        <DetailModal
+          id={selectedMovieId}
+          setShowTrailer={setShowTrailer}
+          setShowDetailModal={setShowDetailModal}
         />
       )}
     </div>
